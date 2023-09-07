@@ -104,14 +104,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\lib\x64;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -130,18 +130,37 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\lib\x64;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\renderer.cpp" />
-    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\CourtScene\CourtScene.cpp" />
+    <ClCompile Include="src\CenterDivider\CenterDivider.cpp" />
+    <ClCompile Include="src\Goal\Goal.cpp" />
+    <ClCompile Include="src\Paddle\Paddle.cpp" />
+    <ClCompile Include="src\Score\Score.cpp" />
+    <ClCompile Include="src\EndScreen\EndScreen.cpp" />
+    <ClCompile Include="src\BoundingBox\boundingBox.cpp" />
+    <ClCompile Include="src\Draw\draw.cpp" />
+    <ClCompile Include="src\Ball\ball.cpp" />
+    <ClCompile Include="src\Game\game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\StartScreen\StartScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\renderer.h" />
-    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\CourtScene\CourtScene.h" />
+    <ClInclude Include="src\CenterDivider\CenterDivider.h" />
+    <ClInclude Include="src\Goal\Goal.h" />
+    <ClInclude Include="src\Paddle\Paddle.h" />
+    <ClInclude Include="src\Scene\Scene.h" />
+    <ClInclude Include="src\Score\Score.h" />
+    <ClInclude Include="src\EndScreen\EndScreen.h" />
+    <ClInclude Include="src\BoundingBox\boundingBox.h" />
+    <ClInclude Include="src\Draw\draw.h" />
+    <ClInclude Include="src\Ball\ball.h" />
+    <ClInclude Include="src\Game\game.h" />
+    <ClInclude Include="src\StartScreen\StartScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
