@@ -4,7 +4,7 @@ Pong Clone made with C++ and SDL
 ## Building
 ```
 Build with VS2022 in release mode
-I may add a cmake list if im not lazy
+Font is setup to work from the IDE working directory only
 ```
 
 ![menu](https://github.com/Tacotakedown/Pong/blob/main/Docs/Image/Menu.png?raw=true)
