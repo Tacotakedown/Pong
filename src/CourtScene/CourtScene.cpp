@@ -38,3 +38,112 @@ void CourtScene::onDraw(SDL_Renderer& renderer) {
 	mRScore.onDraw(renderer);
 }
 
+void CourtScene::onUpdate() {
+	if (mRemainingPauseTicks <= 0) {
+		mLeftPaddle.onUpdate();
+		mRightPaddle.onUpdate();
+		mBall.onUpdate();
+	}
+	else {
+		mRemainingPauseTicks--;
+	}
+}
+
+void CourtScene::onEnter() {
+	srand(static_cast<unsigned int>(time(nullptr)));
+
+	mGame.getPlayerScore()[0] = 0;
+	mGame.getPlayerScore()[1] = 0;
+}
+
+void CourtScene::onExit() {
+
+}
+
+void CourtScene::onKeyDown(SDL_KeyboardEvent& event) {
+	switch (event.keysym.sym)
+	{
+	case SDLK_w:
+		mLeftPaddle.setMovement(Paddle::Movement::UP);
+		break;
+	case SDLK_s:
+		mLeftPaddle.setMovement(Paddle::Movement::DOWN);
+		break;
+	case SDLK_UP:
+		mRightPaddle.setMovement(Paddle::Movement::UP);
+		break;
+	case SDLK_DOWN:
+		mRightPaddle.setMovement(Paddle::Movement::DOWN);
+		break;
+	}
+}
+
+void CourtScene::onKeyUp(SDL_KeyboardEvent& event) {
+	switch (event.keysym.sym){
+	case SDLK_w:
+		if (mLeftPaddle.isMoving(Paddle::Movement::UP)) {
+			mLeftPaddle.setMovement(Paddle::Movement::STILL);
+		}
+		break;
+	case SDLK_s:
+		if (mLeftPaddle.isMoving(Paddle::Movement::DOWN)) {
+			mLeftPaddle.setMovement(Paddle::Movement::STILL);
+		}
+		break;
+	case SDLK_UP:
+		if (mRightPaddle.isMoving(Paddle::Movement::UP)) {
+			mRightPaddle.setMovement(Paddle::Movement::STILL);
+		}
+		break;
+	case SDLK_DOWN:
+		if (mRightPaddle.isMoving(Paddle::Movement::DOWN)) {
+			mRightPaddle.setMovement(Paddle::Movement::STILL);
+		}
+		break;
+	}
+}
+
+void CourtScene::addPlayerScore(int playerIndex) {
+	resetEntities();
+	auto& scores = mGame.getPlayerScore();
+	scores[playerIndex]++;
+	if (playerIndex == 0) {
+		mLScore.setValue(scores[playerIndex]);
+	}
+	else {
+		mRScore.setValue(scores[playerIndex]);
+	}
+	mRemainingPauseTicks = PAUSE_TICKS;
+	if (scores[playerIndex] > 9) {
+		mGame.setScene(std::make_shared<EndScreen>(mGame));
+	}
+}
+
+void CourtScene::resetEntities() {
+	const auto& halfResolution = mGame.getHalfResolution();
+
+	const auto& ballBox = mBall.getBoundingBox();
+	mBall.setX(halfResolution[0] - ballBox.getExtentX());
+	mBall.setY(halfResolution[1] - ballBox.getExtentY());
+
+	int random = rand() % 4;
+	switch (random)
+	{
+	case 0:
+		mBall.setDirection({ 0.5f,0.5f });
+		break;
+	case 1:
+		mBall.setDirection({ 0.5f,-0.5f });
+		break;
+	case 2:
+		mBall.setDirection({ -0.5f,0.5f });
+		break;
+	case 3:
+		mBall.setDirection({ -0.5f,-0.5f });
+	}
+	mBall.setVelocity(ball::INITAL_V);
+
+	const auto& paddleBox = mLeftPaddle.getBoundingBox();
+	mLeftPaddle.setY(halfResolution[1] - paddleBox.getExtentY());
+	mRightPaddle.setY(halfResolution[1] - paddleBox.getExtentY());
+}

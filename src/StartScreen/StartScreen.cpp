@@ -9,7 +9,7 @@ StartScreen::StartScreen(Game& game) : mGame(game), mTopicTexture(nullptr), mLef
 	mTopicTexture = mGame.createText("PONG");
 	mLeftPlayerKeybinds = mGame.createText("Left player uses W and S");
 	mRightPlayerKeybinds = mGame.createText("Right Player uses Up and Down arrows");
-	mContinueInstructions = mGame.createText("Press space tp start");
+	mContinueInstructions = mGame.createText("Press space to start");
 }
 
 StartScreen::~StartScreen()

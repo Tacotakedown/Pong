@@ -26,7 +26,7 @@ Score::Score(int x, int y, int w, int h) : mValue(0)
 
 	mVlines[VLINE_LEFT_TOP] = { x, y, thickness, h / 2 };
 	mVlines[VLINE_LEFT_BOTTOM] = { x, y + h / 2, thickness, h / 2 };
-	mVlines[VLINE_RIGHT_TOP] = { x + w - thickness, y + h / 2, thickness, h / 2 };
+	mVlines[VLINE_RIGHT_TOP] = { x + w - thickness, y, thickness, h / 2 };
 	mVlines[VLINE_RIGHT_BOTTOM] = { x + w - thickness, y + h / 2,thickness, h / 2 };
 	mVlines[VLINE_CENTER] = { x + w / 2 - thickness, y, thickness, h };
 }

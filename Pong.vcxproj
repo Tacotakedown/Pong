@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\rapidjson\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\DiscordRPC\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\rapidjson\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\DiscordRPC\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2_ttf\include;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\src;C:\Users\robog\OneDrive\Documents\github\Pong\Pong\dependencies\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -137,6 +137,13 @@
   <ItemGroup>
     <ClCompile Include="src\CourtScene\CourtScene.cpp" />
     <ClCompile Include="src\CenterDivider\CenterDivider.cpp" />
+    <ClCompile Include="src\DiscordInterface\connection_win.cpp" />
+    <ClCompile Include="src\DiscordInterface\DiscordInterface.cpp" />
+    <ClCompile Include="src\DiscordInterface\discord_register_win.cpp" />
+    <ClCompile Include="src\DiscordInterface\discord_rpc.cpp" />
+    <ClCompile Include="src\DiscordInterface\dllmain.cpp" />
+    <ClCompile Include="src\DiscordInterface\rpc_connection.cpp" />
+    <ClCompile Include="src\DiscordInterface\serialization.cpp" />
     <ClCompile Include="src\Goal\Goal.cpp" />
     <ClCompile Include="src\Paddle\Paddle.cpp" />
     <ClCompile Include="src\Score\Score.cpp" />
@@ -151,6 +158,12 @@
   <ItemGroup>
     <ClInclude Include="src\CourtScene\CourtScene.h" />
     <ClInclude Include="src\CenterDivider\CenterDivider.h" />
+    <ClInclude Include="src\DiscordInterface\backoff.h" />
+    <ClInclude Include="src\DiscordInterface\connection.h" />
+    <ClInclude Include="src\DiscordInterface\DiscordInterface.h" />
+    <ClInclude Include="src\DiscordInterface\msg_queue.h" />
+    <ClInclude Include="src\DiscordInterface\rpc_connection.h" />
+    <ClInclude Include="src\DiscordInterface\serialization.h" />
     <ClInclude Include="src\Goal\Goal.h" />
     <ClInclude Include="src\Paddle\Paddle.h" />
     <ClInclude Include="src\Scene\Scene.h" />

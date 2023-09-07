@@ -2,12 +2,13 @@
 #include "StartScreen/StartScreen.h"
 #include "SDL.h"
 #include <memory>
+#include "DiscordInterface/DiscordInterface.h"
 
 EndScreen::EndScreen(Game& game) : mGame(game), mTopicTexture(nullptr), mEndgameTexture(nullptr), mWinnerTexture(nullptr), mEndResultTexture(nullptr), mResultScoreTexture(nullptr), mInstructionsTexture(nullptr)
 {
 	const auto& scores = mGame.getPlayerScore();
 
-	mTopicTexture = mGame.createText("PONG - RESULTS");
+	mTopicTexture = mGame.createText("RESULTS");
 	mEndgameTexture = mGame.createText("Game has ended");
 	if (scores[0] > 9) {
 		mWinnerTexture = mGame.createText("Left player wins");

@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include<iostream>
+#include "DiscordInterface/DiscordInterface.h"
 
 #define ERROR	-1
 #define OK	   	 0
@@ -22,6 +23,7 @@ Game::~Game()
 
 void Game::start()
 {
+
 	if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 		std::cerr << "Unable to initalize SDL:" << SDL_GetError() << std::endl;
 		return;
@@ -49,7 +51,10 @@ void Game::start()
 		std::cerr <<"Unable to load font:" << TTF_GetError() << std::endl;
 	}
 
+	DiscordInterface::InitalizeDiscord();
+
 	setScene(std::make_shared<StartScreen>(*this));
+	
 
 	auto isRunning = true;
 	SDL_Event event;
@@ -78,9 +83,27 @@ void Game::start()
 
 		mScene->onDraw(*mRenderer);
 
+		const auto& scores = getPlayerScore();
+		DiscordInterface::UpdatePresence("Score", std::to_string(scores[0]) + "-" + std::to_string(scores[1]));
+
 		SDL_RenderPresent(mRenderer);
 	}
 }
+
+void Game::setScene(ScenePtr scene) {
+	if (scene == nullptr) {
+		std::cerr << "Unable to set null as the active scene" << std::endl;
+		return;
+	}
+	if (mScene) {
+		mScene->onExit();
+	}
+	mScene = scene;
+	
+	std::cerr << (char)mScene.get() << std::endl;
+	mScene->onEnter();
+}
+
 
 SDL_Texture* Game::createText(const string& text) {
 	SDL_Color color{ 0xff,0xff,0xff,0xff };

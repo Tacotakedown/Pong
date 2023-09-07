@@ -1,9 +1,10 @@
-#include "SDL.h"
-#include <iostream>
+#include "Game/game.h"
 #undef main
 
-auto main() -> int
+int main(int argc, char* args[])
+
 {
- 
+    Game game;
+    game.start();
     return 0;
 }

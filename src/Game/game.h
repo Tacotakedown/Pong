@@ -38,7 +38,7 @@ public:
 		return mHalfResolution;
 	}
 
-	const std::array<int, 2>& getPlayerScore() {
+	std::array<int, 2>& getPlayerScore() {
 		return mPlayerScore;
 	}
 
