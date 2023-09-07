@@ -100,7 +100,6 @@ void Game::setScene(ScenePtr scene) {
 	}
 	mScene = scene;
 	
-	std::cerr << (char)mScene.get() << std::endl;
 	mScene->onEnter();
 }
 
