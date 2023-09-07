@@ -46,7 +46,7 @@ void Game::start()
 		return;
 	}
 
-	mFont = TTF_OpenFont("C:/Windows/Fonts/courbd.ttf", 28);
+	mFont = TTF_OpenFont(".\\font\\courbd.ttf", 28);
 	if (mFont == nullptr) {
 		std::cerr <<"Unable to load font:" << TTF_GetError() << std::endl;
 	}
