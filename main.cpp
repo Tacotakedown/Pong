@@ -1,8 +1,6 @@
 #include "Game/game.h"
-#undef main
 
-int main(int argc, char* args[])
-
+auto main() -> int
 {
     Game game;
     game.start();
