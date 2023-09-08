@@ -1,11 +1,11 @@
 #include "CenterDivider.h"
 
-CenterDivider::CenterDivider(int x, int y, int h, int w) : mRect({ x,y,w,h })
+CenterLine::CenterLine(int x, int y, int h, int w) : mRect({ x,y,w,h })
 {
 
 }
 
-void CenterDivider::onDraw(SDL_Renderer& renderer)
+void CenterLine::onDraw(SDL_Renderer& renderer)
 {
 	for (float y = static_cast<float>(mRect.y); y < mRect.h; y += (1.93f * mRect.w))
 	{

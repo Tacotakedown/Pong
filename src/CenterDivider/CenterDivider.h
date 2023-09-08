@@ -3,13 +3,13 @@
 
 #include "SDL.h"
 
-class CenterDivider
+class CenterLine
 {
 private:
 	SDL_Rect mRect;
 
 public:
-	CenterDivider(int x, int y, int h, int w);
+	CenterLine(int x, int y, int h, int w);
 
 	void onDraw(SDL_Renderer& renderer);
 };

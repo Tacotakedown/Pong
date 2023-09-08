@@ -56,10 +56,13 @@ void Game::start()
 	setScene(std::make_shared<StartScreen>(*this));
 	
 
+
 	auto isRunning = true;
 	SDL_Event event;
 	while (isRunning)
 	{
+		Uint64 start = SDL_GetPerformanceCounter();
+
 		while (SDL_PollEvent(&event) != 0) {
 			switch (event.type)
 			{
@@ -74,6 +77,7 @@ void Game::start()
 				break;
 			}
 		}
+		
 
 		mScene->onUpdate();
 
@@ -83,10 +87,16 @@ void Game::start()
 
 		mScene->onDraw(*mRenderer);
 
+		Uint64 end = SDL_GetPerformanceCounter();
+
+		float elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
+
 		const auto& scores = getPlayerScore();
 		DiscordInterface::UpdatePresence("Score", std::to_string(scores[0]) + "-" + std::to_string(scores[1]));
 
 		SDL_RenderPresent(mRenderer);
+
+		SDL_Delay(floor(16.666f - elapsedMS));
 	}
 }
 

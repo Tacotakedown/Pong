@@ -54,10 +54,10 @@ public:
 		return mBottomWall;
 	}
 
-	const CenterDivider& getCenterDivider() const {
+	const CenterLine& getCenterDivider() const {
 		return mCenterLine;
 	}
-	CenterDivider& getCenterDivider() {
+	CenterLine& getCenterDivider() {
 		return mCenterLine;
 	}
 
@@ -94,7 +94,7 @@ private:
 	Game&			mGame;
 	draw			mBottomWall;
 	draw			mTopWall;
-	CenterDivider	mCenterLine;
+	CenterLine		mCenterLine;
 	Paddle			mLeftPaddle;
 	Paddle			mRightPaddle;
 	ball			mBall;
