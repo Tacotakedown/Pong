@@ -14,7 +14,7 @@ mTopWall(0, 0, game.getResolution()[0], BOX_WIDTH),
 mBottomWall(0, (game.getResolution()[1] - BOX_WIDTH), game.getResolution()[0], BOX_WIDTH),
 mCenterLine((game.getResolution()[0] / 2) - BOX_WIDTH / 2, BOX_WIDTH, BOX_WIDTH, game.getResolution()[1]),
 mLeftPaddle(*this, EDGE_OFFSET, (game.getResolution()[1] / 2) - (PADDLE_HEIGHT / 2), BOX_WIDTH, PADDLE_HEIGHT),
-mRightPaddle(*this, game.getResolution()[0] - EDGE_OFFSET - BOX_WIDTH, (game.getResolution()[1] / 2) - (PADDLE_HEIGHT / 2), BOX_WIDTH, PADDLE_HEIGHT),
+mAiPaddle(*this, game.getResolution()[0] - EDGE_OFFSET - BOX_WIDTH, (game.getResolution()[1] / 2) - (PADDLE_HEIGHT / 2), BOX_WIDTH, PADDLE_HEIGHT),
 mBall(*this, game.getResolution()[0] / 2 - (BOX_WIDTH / 2), game.getResolution()[1] / 2 - (BOX_WIDTH / 2), BOX_WIDTH, BOX_WIDTH),
 mLGoal(-1000, 0, 1000 - BOX_WIDTH, game.getResolution()[1]),
 mRGoal(game.getResolution()[0] + BOX_WIDTH, 0, 1000, game.getResolution()[1]),
@@ -32,7 +32,7 @@ void CourtScene::onDraw(SDL_Renderer& renderer) {
 	mBottomWall.onDraw(renderer);
 	mCenterLine.onDraw(renderer);
 	mLeftPaddle.onDraw(renderer);
-	mRightPaddle.onDraw(renderer);
+	mAiPaddle.onDraw(renderer);
 	mBall.onDraw(renderer);
 	mLScore.onDraw(renderer);
 	mRScore.onDraw(renderer);
@@ -41,7 +41,7 @@ void CourtScene::onDraw(SDL_Renderer& renderer) {
 void CourtScene::onUpdate() {
 	if (mRemainingPauseTicks <= 0) {
 		mLeftPaddle.onUpdate();
-		mRightPaddle.onUpdate();
+		mAiPaddle.onUpdate();
 		mBall.onUpdate();
 	}
 	else {
@@ -69,12 +69,7 @@ void CourtScene::onKeyDown(SDL_KeyboardEvent& event) {
 	case SDLK_s:
 		mLeftPaddle.setMovement(Paddle::Movement::DOWN);
 		break;
-	case SDLK_UP:
-		mRightPaddle.setMovement(Paddle::Movement::UP);
-		break;
-	case SDLK_DOWN:
-		mRightPaddle.setMovement(Paddle::Movement::DOWN);
-		break;
+
 	}
 }
 
@@ -88,16 +83,6 @@ void CourtScene::onKeyUp(SDL_KeyboardEvent& event) {
 	case SDLK_s:
 		if (mLeftPaddle.isMoving(Paddle::Movement::DOWN)) {
 			mLeftPaddle.setMovement(Paddle::Movement::STILL);
-		}
-		break;
-	case SDLK_UP:
-		if (mRightPaddle.isMoving(Paddle::Movement::UP)) {
-			mRightPaddle.setMovement(Paddle::Movement::STILL);
-		}
-		break;
-	case SDLK_DOWN:
-		if (mRightPaddle.isMoving(Paddle::Movement::DOWN)) {
-			mRightPaddle.setMovement(Paddle::Movement::STILL);
 		}
 		break;
 	}
@@ -145,5 +130,5 @@ void CourtScene::resetEntities() {
 
 	const auto& paddleBox = mLeftPaddle.getBoundingBox();
 	mLeftPaddle.setY(halfResolution[1] - paddleBox.getExtentY());
-	mRightPaddle.setY(halfResolution[1] - paddleBox.getExtentY());
+	mAiPaddle.setY(halfResolution[1] - paddleBox.getExtentY());
 }

@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AiPaddle\AiPaddle.cpp" />
     <ClCompile Include="src\CourtScene\CourtScene.cpp" />
     <ClCompile Include="src\CenterDivider\CenterDivider.cpp" />
     <ClCompile Include="src\DiscordInterface\connection_win.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="src\StartScreen\StartScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AiPaddle\AiPaddle.h" />
     <ClInclude Include="src\CourtScene\CourtScene.h" />
     <ClInclude Include="src\CenterDivider\CenterDivider.h" />
     <ClInclude Include="src\DiscordInterface\backoff.h" />

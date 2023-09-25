@@ -8,7 +8,7 @@
 #define ERROR	-1
 #define OK	   	 0
 
-Game::Game() : mWindow(nullptr), mRenderer(nullptr), mFont(nullptr), mResolution({ 800,600 }), mHalfResolution({ mResolution[0] / 2,mResolution[1] / 2 }), mPlayerScore({ 0,0 })
+Game::Game() : mWindow(nullptr), mRenderer(nullptr), mFont(nullptr), mResolution({ 1000,800 }), mHalfResolution({ mResolution[0] / 2,mResolution[1] / 2 }), mPlayerScore({ 0,0 })
 {
 
 }
@@ -49,6 +49,16 @@ void Game::start()
 	mFont = TTF_OpenFont(".\\font\\courbd.ttf", 28);
 	if (mFont == nullptr) {
 		std::cerr <<"Unable to load font:" << TTF_GetError() << std::endl;
+	}
+
+	mSmallFont = TTF_OpenFont(".\\font\\courbd.ttf", 12);
+	if (mSmallFont == nullptr) {
+		std::cerr << "Unable to load font:" << TTF_GetError() << std::endl;
+	}
+
+	mLargeFont = TTF_OpenFont(".\\font\\courbd.ttf", 40);
+	if (mLargeFont == nullptr) {
+		std::cerr << "Unable to load font:" << TTF_GetError() << std::endl;
 	}
 
 	DiscordInterface::InitalizeDiscord();
@@ -130,3 +140,40 @@ SDL_Texture* Game::createText(const string& text) {
 	}
 	return texture;
 }
+
+SDL_Texture* Game::createSmallText(const string& text)
+{
+	SDL_Color color{ 0xff,0xff,0xff,0xff };
+	auto surface = TTF_RenderText_Blended(mSmallFont, text.c_str(), color);
+	if (surface == nullptr) {
+		std::cerr << "Unable to create surface with text: " << TTF_GetError() << std::endl;
+		return nullptr;
+	}
+
+	auto texture = SDL_CreateTextureFromSurface(mRenderer, surface);
+	SDL_FreeSurface(surface);
+	if (texture == nullptr) {
+		std::cerr << "Unable to create function from a text surface:" << SDL_GetError() << std::endl;
+		return nullptr;
+	}
+	return texture;
+}
+
+SDL_Texture* Game::createLargeText(const string& text)
+{
+	SDL_Color color{ 0xff,0xff,0xff,0xff };
+	auto surface = TTF_RenderText_Blended(mLargeFont, text.c_str(), color);
+	if (surface == nullptr) {
+		std::cerr << "Unable to create surface with text: " << TTF_GetError() << std::endl;
+		return nullptr;
+	}
+
+	auto texture = SDL_CreateTextureFromSurface(mRenderer, surface);
+	SDL_FreeSurface(surface);
+	if (texture == nullptr) {
+		std::cerr << "Unable to create function from a text surface:" << SDL_GetError() << std::endl;
+		return nullptr;
+	}
+	return texture;
+}
+

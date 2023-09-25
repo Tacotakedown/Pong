@@ -29,6 +29,8 @@ public:
 	void setScene(ScenePtr scene);
 
 	SDL_Texture* createText(const string& text);
+	SDL_Texture* createSmallText(const string& text);
+	SDL_Texture* createLargeText(const string& text);
 
 	const std::array<int, 2>& getResolution() const {
 		return mResolution;
@@ -46,6 +48,8 @@ private:
 	SDL_Window*			mWindow;
 	SDL_Renderer*		mRenderer;
 	_TTF_Font*			mFont;
+	_TTF_Font*			mSmallFont;
+	_TTF_Font*			mLargeFont;
 	ScenePtr			mScene;
 	std::array<int, 2>	mResolution;
 	std::array<int, 2>	mHalfResolution;

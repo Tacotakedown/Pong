@@ -8,6 +8,7 @@
 #include "Draw/draw.h"
 #include "Scene/Scene.h"
 #include "Score/Score.h"
+#include "AiPaddle/AiPaddle.h"
 
 #include <array>
 
@@ -68,11 +69,11 @@ public:
 		return mLeftPaddle;
 	}
 
-	const Paddle& getRPaddle() const {
-		return mRightPaddle;
+	const AiPaddle& getAiPaddle() const {
+		return mAiPaddle;
 	}
-	Paddle& getRPaddle() {
-		return mRightPaddle;
+	AiPaddle& getAiPaddle() {
+		return mAiPaddle;
 	}
 
 	const Goal& getLeftGoal() const {
@@ -96,7 +97,7 @@ private:
 	draw			mTopWall;
 	CenterLine		mCenterLine;
 	Paddle			mLeftPaddle;
-	Paddle			mRightPaddle;
+	AiPaddle		mAiPaddle;
 	ball			mBall;
 	Goal			mLGoal;
 	Goal			mRGoal;

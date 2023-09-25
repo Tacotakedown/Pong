@@ -1,5 +1,6 @@
 #include "ball.h"
 #include "CourtScene/CourtScene.h"
+#include <iostream>
 
 const float ball::INITAL_V = 8.0f;
 const float ball::V_INCREASE = 1.0f;
@@ -32,11 +33,12 @@ void ball::onUpdate()
 
 	mBoundingBox.setCenterX(mBoundingBox.getCenterX() + movement[0]);
 	mBoundingBox.setCenterY(mBoundingBox.getCenterY() + movement[1]);
+	mScene.getAiPaddle().setY(mBoundingBox.getCenterY()- 40);
 
 	const auto& bottomWallBox = mScene.getBottomWall().getBoundingBox();
 	const auto& topWallBox = mScene.getTopWall().getBoundingBox();
 	const auto& leftPaddleBox = mScene.getLPaddle().getBoundingBox();
-	const auto& rightPaddleBox = mScene.getRPaddle().getBoundingBox();
+	const auto& rightPaddleBox = mScene.getAiPaddle().getBoundingBox();
 	const auto& leftGoalBox = mScene.getLeftGoal().getBoundingBox();
 	const auto& rightGoalBox = mScene.getRightGoal().getBoundingBox();
 
@@ -65,6 +67,8 @@ void ball::onUpdate()
 
 		mBoundingBox.setCenterX(mRect.x + mBoundingBox.getExtentX());
 		mBoundingBox.setCenterY(mRect.y + mBoundingBox.getExtentY());
+
+		
 
 		mDirection[0] = -mDirection[0];
 

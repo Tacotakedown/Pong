@@ -23,8 +23,11 @@ private:
 	Game& mGame;
 	SDL_Texture* mTopicTexture;
 	SDL_Texture* mLeftPlayerKeybinds;
-	SDL_Texture* mRightPlayerKeybinds;
 	SDL_Texture* mContinueInstructions;
+	SDL_Texture* mVeryMotivationalText;
+	SDL_Texture* mVeryMotivationalTextLine2;
+	SDL_Texture* mVeryMotivationalTextLine3;
+	SDL_Texture* mVeryMotivationalTextLine4;
 };
 
 
